@@ -1,3 +1,23 @@
+.menu {
+  position: absolute;
+  top: 2.5rem;
+  right: 2.5rem;
+  z-index: 3;
+  transition: all 0.5s ease-out; }
+  .menu .btn-lines {
+    background-color: white;
+    margin: 0.2rem;
+    width: 28px;
+    height: 3px; }
+  .menu.close {
+    transform: rotate(180deg); }
+    .menu.close .btn-lines:nth-child(1) {
+      transform: rotate(45deg) translate(3px, 3px); }
+    .menu.close .btn-lines:nth-child(2) {
+      opacity: 0; }
+    .menu.close .btn-lines:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -5px); }
+
 /* Global colors*/
 * {
   box-sizing: border-box;
