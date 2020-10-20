@@ -1,43 +1,32 @@
+@import "config";
 @import "menu";
-/* Global colors*/
-$primary-color: #444;
-$secondary-color: #eece1a;
 
-$home-background: url("../img/background.jpg");
-$show-image: true;
-@mixin easeOut {
-  transition: all 0.5s ease-out;
-}
-@mixin backgroundImage {
-  @if $show-image {
-    &#bg {
-      background: $home-background;
-      background-attachment: fixed;
-      background-size: cover;
-      .overlay {
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -2;
-        background-color: rgba($color: $primary-color, $alpha: 0.9);
-      }
-    }
-  }
-}
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 body {
+  position: relative;
   @include backgroundImage;
   background-color: $primary-color;
   color: white;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
-  overflow: hidden;
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-color: rgba($primary-color, 0.9);
+  }
+}
+h1,
+h2 {
+  font-weight: 400;
 }
 
 h2 {
@@ -68,9 +57,9 @@ main {
     margin-top: 1rem;
     a {
       padding: 0.4rem;
+      @include easeOut;
       &:hover {
         color: $secondary-color;
-        @include easeOut;
       }
     }
   }
@@ -79,4 +68,98 @@ main {
       margin-top: 20vh;
     }
   }
+  &#about {
+    .portrait {
+      margin: auto;
+      width: 280px;
+      height: 280px;
+      background: url("../img/portrait.jpeg");
+      border-radius: 50%;
+      border: solid 3px $secondary-color;
+    }
+    .section-a {
+      display: grid;
+
+      grid-template-columns: repeat(2, 1fr);
+      .bio {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+      }
+      margin-bottom: 2rem;
+    }
+    .section-b {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 2rem;
+
+      .box {
+        padding: 1.5rem;
+        border-bottom: 2px solid $secondary-color;
+
+        background: lighten($primary-color, 5);
+      }
+    }
+  }
+  &#projects {
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-gap: 1rem;
+      img {
+        width: 100%;
+        border: 3px solid #fff;
+        margin-bottom: 0.3rem;
+      }
+      .project {
+        display: grid;
+        a {
+          text-align: center;
+          font-size: 1rem;
+          &.project-name {
+            background-color: #fff;
+            color: black;
+            padding: 1rem 0;
+            margin: 0.2rem 0;
+          }
+          &.project-link {
+            background-color: black;
+            color: #fff;
+            outline: none;
+            border: none;
+            padding: 1rem 0;
+            margin: 0.2rem 0;
+          }
+        }
+      }
+    }
+  }
+  &#contact {
+    .contacts {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      align-items: center;
+    }
+    .contact {
+      font-size: 1.1rem;
+      margin-top: 1rem;
+      border: 3px solid #fff;
+      padding: 2rem;
+      &:hover {
+        @include easeOut;
+
+        padding: 0.8rem 1.5rem;
+        background-color: $secondary-color;
+        .highlighter,
+        h2 {
+          color: black;
+        }
+      }
+    }
+  }
+}
+.main-footer {
+  text-align: center;
+  background: darken($primary-color, 10);
+  padding: 2rem 0;
 }

@@ -2,6 +2,7 @@
   position: absolute;
   top: 2.5rem;
   right: 2.5rem;
+  cursor: pointer;
   z-index: 3;
   transition: all 0.5s ease-out; }
   .menu .btn-lines {
@@ -30,6 +31,7 @@ nav {
   nav .right {
     display: flex;
     justify-content: center;
+    flex-flow: column wrap;
     align-items: center;
     float: left;
     width: 50%;
@@ -39,6 +41,10 @@ nav {
     background-color: #373737;
     transform: translate3d(0, -100%, 0);
     transition: all 0.5s ease-out; }
+    nav .right a {
+      font-size: 1.3rem;
+      padding: 2rem 0;
+      text-transform: uppercase; }
     nav .right li {
       list-style-type: none; }
     nav .right.show {
@@ -46,6 +52,8 @@ nav {
     nav .right .nav-item {
       transform: translate3d(600px, 0, 0);
       transition: all 0.5s ease-out; }
+      nav .right .nav-item.current > a {
+        color: #eece1a; }
       nav .right .nav-item.show {
         transform: translate3d(0, 0, 0); }
   nav .left {
@@ -69,30 +77,33 @@ nav {
   nav .nav-item:nth-child(4) {
     transition-delay: 0.4s; }
 
-/* Global colors*/
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0; }
 
 body {
+  position: relative;
   background-color: #444;
   color: white;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  line-height: 1.6;
-  overflow: hidden; }
+  line-height: 1.6; }
   body#bg {
     background: url("../img/background.jpg");
     background-attachment: fixed;
     background-size: cover; }
-    body#bg .overlay {
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -2;
-      background-color: rgba(68, 68, 68, 0.9); }
+  body .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-color: rgba(68, 68, 68, 0.9); }
+
+h1,
+h2 {
+  font-weight: 400; }
 
 h2.secondary-heading {
   padding: 0.5rem 0.5rem;
@@ -119,9 +130,78 @@ main {
   main .media {
     margin-top: 1rem; }
     main .media a {
-      padding: 0.4rem; }
+      padding: 0.4rem;
+      transition: all 0.5s ease-out; }
       main .media a:hover {
-        color: #eece1a;
-        transition: all 0.5s ease-out; }
+        color: #eece1a; }
   main#home h1 {
     margin-top: 20vh; }
+  main#about .portrait {
+    margin: auto;
+    width: 280px;
+    height: 280px;
+    background: url("../img/portrait.jpeg");
+    border-radius: 50%;
+    border: solid 3px #eece1a; }
+  main#about .section-a {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-bottom: 2rem; }
+    main#about .section-a .bio {
+      font-size: 2rem;
+      margin-bottom: 2rem; }
+  main#about .section-b {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2rem; }
+    main#about .section-b .box {
+      padding: 1.5rem;
+      border-bottom: 2px solid #eece1a;
+      background: #515151; }
+  main#projects .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 1rem; }
+    main#projects .projects-grid img {
+      width: 100%;
+      border: 3px solid #fff;
+      margin-bottom: 0.3rem; }
+    main#projects .projects-grid .project {
+      display: grid; }
+      main#projects .projects-grid .project a {
+        text-align: center;
+        font-size: 1rem; }
+        main#projects .projects-grid .project a.project-name {
+          background-color: #fff;
+          color: black;
+          padding: 1rem 0;
+          margin: 0.2rem 0; }
+        main#projects .projects-grid .project a.project-link {
+          background-color: black;
+          color: #fff;
+          outline: none;
+          border: none;
+          padding: 1rem 0;
+          margin: 0.2rem 0; }
+  main#contact .contacts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center; }
+  main#contact .contact {
+    font-size: 1.1rem;
+    margin-top: 1rem;
+    border: 3px solid #fff;
+    padding: 2rem; }
+    main#contact .contact:hover {
+      transition: all 0.5s ease-out;
+      padding: 0.8rem 1.5rem;
+      background-color: #eece1a; }
+      main#contact .contact:hover .highlighter,
+      main#contact .contact:hover h2 {
+        color: black; }
+
+.main-footer {
+  text-align: center;
+  background: #2b2b2b;
+  padding: 2rem 0; }

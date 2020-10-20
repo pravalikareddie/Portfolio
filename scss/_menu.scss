@@ -2,8 +2,9 @@
   position: absolute;
   top: 2.5rem;
   right: 2.5rem;
+  cursor: pointer;
   z-index: 3;
-  transition: all 0.5s ease-out;
+  @include easeOut;
 
   .btn-lines {
     background-color: white;
@@ -40,6 +41,7 @@ nav {
   .right {
     display: flex;
     justify-content: center;
+    flex-flow: column wrap;
     align-items: center;
     float: left;
     width: 50%;
@@ -47,20 +49,27 @@ nav {
     height: 100vh;
   }
   .right {
+    a {
+      font-size: 1.3rem;
+      padding: 2rem 0;
+      text-transform: uppercase;
+    }
     li {
       list-style-type: none;
     }
-    background-color: darken(#444, 5);
+    background-color: darken($primary-color, 5);
     transform: translate3d(0, -100%, 0);
-    transition: all 0.5s ease-out;
+    @include easeOut;
 
     &.show {
       transform: translate3d(0, 0, 0);
     }
     .nav-item {
       transform: translate3d(600px, 0, 0);
-      transition: all 0.5s ease-out;
-
+      @include easeOut;
+      &.current > a {
+        color: $secondary-color;
+      }
       &.show {
         transform: translate3d(0, 0, 0);
       }
@@ -68,8 +77,8 @@ nav {
   }
   .left {
     transform: translate3d(0, 100%, 0);
-    transition: all 0.5s ease-out;
-    background-color: #444;
+    @include easeOut;
+    background-color: $primary-color;
     &.show {
       transform: translate3d(0, 0, 0);
     }
@@ -78,7 +87,7 @@ nav {
       height: 280px;
       background: url("../img/portrait.jpeg");
       border-radius: 50%;
-      border: solid 3px #eece1a;
+      border: solid 3px $secondary-color;
     }
   }
   @for $x from 1 through 4 {
