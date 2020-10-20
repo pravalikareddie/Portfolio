@@ -26,3 +26,64 @@
     }
   }
 }
+nav {
+  position: fixed;
+  top: 0;
+
+  opacity: 0.9;
+  width: 100%;
+  visibility: hidden;
+  &.show {
+    visibility: visible;
+  }
+  .left,
+  .right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: left;
+    width: 50%;
+    overflow: hidden;
+    height: 100vh;
+  }
+  .right {
+    li {
+      list-style-type: none;
+    }
+    background-color: darken(#444, 5);
+    transform: translate3d(0, -100%, 0);
+    transition: all 0.5s ease-out;
+
+    &.show {
+      transform: translate3d(0, 0, 0);
+    }
+    .nav-item {
+      transform: translate3d(600px, 0, 0);
+      transition: all 0.5s ease-out;
+
+      &.show {
+        transform: translate3d(0, 0, 0);
+      }
+    }
+  }
+  .left {
+    transform: translate3d(0, 100%, 0);
+    transition: all 0.5s ease-out;
+    background-color: #444;
+    &.show {
+      transform: translate3d(0, 0, 0);
+    }
+    .portrait {
+      width: 280px;
+      height: 280px;
+      background: url("../img/portrait.jpeg");
+      border-radius: 50%;
+      border: solid 3px #eece1a;
+    }
+  }
+  @for $x from 1 through 4 {
+    .nav-item:nth-child(#{$x}) {
+      transition-delay: $x * 0.1s;
+    }
+  }
+}
