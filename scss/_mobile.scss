@@ -1,0 +1,128 @@
+// Widescreens
+@include mediaXl {
+  main#projects {
+    .projects-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+}
+
+// Desktops & Laptops
+@include mediaLg {
+  main#projects {
+    .projects-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  main#about {
+    .section-a {
+      grid-template-columns: 1fr;
+      h2 {
+        font-size: 1.5rem;
+      }
+      .portrait {
+        height: 250px;
+        width: 250px;
+        margin-bottom: 1rem;
+      }
+      .bio {
+        margin-bottom: 1rem;
+      }
+    }
+  }
+}
+
+// Tablets & Small Laptops
+@include mediaMd {
+  main#about {
+    .section-a {
+      grid-template-columns: 1fr;
+      h2 {
+        font-size: 1.2rem;
+      }
+      .portrait {
+        height: 250px;
+        width: 250px;
+        margin-bottom: 1rem;
+      }
+      .bio {
+        margin-bottom: 1rem;
+      }
+    }
+    .section-b {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  main {
+    align-items: center;
+    text-align: center;
+  }
+  nav {
+    .left,
+    .right {
+      width: 100%;
+      min-height: 0;
+      &.show {
+        transform: translate3d(0, 0, 0);
+      }
+    }
+    .right {
+      height: 55vh;
+      transform: translate3d(-100%, 0, 0);
+      font-size: 24px;
+    }
+    .left {
+      height: 45vh;
+      transform: translate3d(100%, 0, 0);
+
+      .portrait {
+        background: url("../img/portrait2.jpeg");
+        width: 200px;
+        height: 200px;
+      }
+    }
+  }
+  h1 {
+    font-size: 4rem;
+  }
+  .section-a {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  main#projects {
+    .projects-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  main#contact .contact {
+    padding: 0.8rem;
+    h2 {
+      font-size: 1.6rem;
+    }
+  }
+}
+
+// Smartphones
+@include mediaSm {
+  main#contact .contact {
+    padding: 0.7rem;
+    h2 {
+      font-size: 1.3rem;
+    }
+  }
+  h1 {
+    margin-top: 1rem;
+    font-size: 4rem;
+  }
+  main {
+    padding: 2rem;
+    #home h1 {
+      margin-top: 10vh;
+    }
+  }
+  main#projects {
+    .projects-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+}

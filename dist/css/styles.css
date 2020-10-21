@@ -35,7 +35,6 @@ nav {
     align-items: center;
     float: left;
     width: 50%;
-    overflow: hidden;
     height: 100vh; }
   nav .right {
     background-color: #373737;
@@ -43,15 +42,21 @@ nav {
     transition: all 0.5s ease-out; }
     nav .right a {
       font-size: 1.3rem;
-      padding: 2rem 0;
-      text-transform: uppercase; }
+      padding: 1rem 0;
+      text-transform: uppercase;
+      transition: all 0.5s ease-out; }
     nav .right li {
       list-style-type: none; }
     nav .right.show {
       transform: translate3d(0, 0, 0); }
     nav .right .nav-item {
       transform: translate3d(600px, 0, 0);
+      font-size: 30px;
       transition: all 0.5s ease-out; }
+      nav .right .nav-item a {
+        display: inline-block; }
+        nav .right .nav-item a:hover {
+          color: #eece1a; }
       nav .right .nav-item.current > a {
         color: #eece1a; }
       nav .right .nav-item.show {
@@ -59,7 +64,7 @@ nav {
   nav .left {
     transform: translate3d(0, 100%, 0);
     transition: all 0.5s ease-out;
-    background-color: #444; }
+    background-color: #353535; }
     nav .left.show {
       transform: translate3d(0, 0, 0); }
     nav .left .portrait {
@@ -83,23 +88,24 @@ nav {
   padding: 0; }
 
 body {
-  position: relative;
   background-color: #444;
   color: white;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  line-height: 1.6; }
+  line-height: 1.6;
+  height: 100%; }
   body#bg {
     background: url("../img/background.jpg");
     background-attachment: fixed;
     background-size: cover; }
-  body .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    background-color: rgba(68, 68, 68, 0.9); }
+    body#bg:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: rgba(68, 68, 68, 0.9); }
 
 h1,
 h2 {
@@ -134,12 +140,14 @@ main {
       transition: all 0.5s ease-out; }
       main .media a:hover {
         color: #eece1a; }
-  main#home h1 {
-    margin-top: 20vh; }
+  main#home {
+    overflow: hidden; }
+    main#home h1 {
+      margin-top: 20vh; }
   main#about .portrait {
     margin: auto;
-    width: 280px;
-    height: 280px;
+    width: 260px;
+    height: 260px;
     background: url("../img/portrait.jpeg");
     border-radius: 50%;
     border: solid 3px #eece1a; }
@@ -205,3 +213,81 @@ main {
   text-align: center;
   background: #2b2b2b;
   padding: 2rem 0; }
+
+@media screen and (min-width: 1171px) {
+  main#projects .projects-grid {
+    grid-template-columns: repeat(4, 1fr); } }
+
+@media screen and (min-width: 769px) and (max-width: 1170px) {
+  main#projects .projects-grid {
+    grid-template-columns: repeat(3, 1fr); }
+  main#about .section-a {
+    grid-template-columns: 1fr; }
+    main#about .section-a h2 {
+      font-size: 1.5rem; }
+    main#about .section-a .portrait {
+      height: 250px;
+      width: 250px;
+      margin-bottom: 1rem; }
+    main#about .section-a .bio {
+      margin-bottom: 1rem; } }
+
+@media screen and (max-width: 768px) {
+  main#about .section-a {
+    grid-template-columns: 1fr; }
+    main#about .section-a h2 {
+      font-size: 1.2rem; }
+    main#about .section-a .portrait {
+      height: 250px;
+      width: 250px;
+      margin-bottom: 1rem; }
+    main#about .section-a .bio {
+      margin-bottom: 1rem; }
+  main#about .section-b {
+    grid-template-columns: repeat(2, 1fr); }
+  main {
+    align-items: center;
+    text-align: center; }
+  nav .left,
+  nav .right {
+    width: 100%;
+    min-height: 0; }
+    nav .left.show,
+    nav .right.show {
+      transform: translate3d(0, 0, 0); }
+  nav .right {
+    height: 55vh;
+    transform: translate3d(-100%, 0, 0);
+    font-size: 24px; }
+  nav .left {
+    height: 45vh;
+    transform: translate3d(100%, 0, 0); }
+    nav .left .portrait {
+      background: url("../img/portrait2.jpeg");
+      width: 200px;
+      height: 200px; }
+  h1 {
+    font-size: 4rem; }
+  .section-a {
+    grid-template-columns: repeat(1, 1fr); }
+  main#projects .projects-grid {
+    grid-template-columns: repeat(2, 1fr); }
+  main#contact .contact {
+    padding: 0.8rem; }
+    main#contact .contact h2 {
+      font-size: 1.6rem; } }
+
+@media screen and (max-width: 500px) {
+  main#contact .contact {
+    padding: 0.7rem; }
+    main#contact .contact h2 {
+      font-size: 1.3rem; }
+  h1 {
+    margin-top: 1rem;
+    font-size: 4rem; }
+  main {
+    padding: 2rem; }
+    main #home h1 {
+      margin-top: 10vh; }
+  main#projects .projects-grid {
+    grid-template-columns: 1fr; } }
